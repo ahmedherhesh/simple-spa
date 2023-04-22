@@ -1,0 +1,22 @@
+*{
+    margin:0;
+    padding: 0;
+}
+nav{
+    width:400px;
+    margin:10px auto 0
+}
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+li a{
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #000;
+    display: block;
+}
