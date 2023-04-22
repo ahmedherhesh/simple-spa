@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      *{
+        margin:0;
+        padding: 0;
+      }
+      #root {
+        display: grid;
+        place-content: center;
+        min-height: 70vh;
+      }
+      nav {
+        width: 400px;
+        margin: 50px auto;
+      }
+      ul {
+        list-style: none;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      li a {
+        display: block;
+        padding: 8px;
+        border-radius: 5px;
+        color: #fff;
+        background-color: #000;
+        text-transform: capitalize;
+      }
+      li a {
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a data-title="Home" href="pages/home.html">Home</a></li>
+        <li>
+          <a data-title="Portofolio" href="pages/portofolio.html">Portofolio</a>
+        </li>
+        <li><a data-title="About" href="pages/about.html">About</a></li>
+        <li>
+          <a data-title="Contact Us" href="pages/contact-us.html">Contact us</a>
+        </li>
+      </ul>
+    </nav>
+    <div id="root"></div>
+    <script>
+      document.querySelectorAll("a").forEach((el) => {
+        el.onclick = async (e) => {
+          e.preventDefault();
+          let page = await fetch(el.href);
+          root.innerHTML = await page.text();
+          document.title = el.dataset.title ?? "";
+        };
+      });
+    </script>
+  </body>
+</html>
